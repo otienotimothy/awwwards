@@ -9,3 +9,6 @@ def projectDetails(request):
 
 def userprofile(request):
     return render(request, 'profile.html')
+
+def uploadProject(request):
+    return render(request, 'upload.html')
