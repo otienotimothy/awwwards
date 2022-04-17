@@ -88,6 +88,20 @@ def projectDetails(request, projectName):
     except:
         return render(request, '404.html')
 
+def userprofile(request, username):
+
+    if request.user.username != username:
+        logout(request)
+        redirect(loginUser)
+
+    try:
+        userProfile = User.objects.get(username=username)
+    except:
+        messages.error(
+            request, 'An Error Occured while trying to load your Profile')
+
+    context = {'userProfile': userProfile}
+    return render(request, 'profile.html', context)
 
 def uploadProject(request):
     return render(request, 'upload.html')
