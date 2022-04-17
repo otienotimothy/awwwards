@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Profile
+from .models import Profile, Project
 from .forms import UserRegistrationForm, LoginUserForm
 
 
@@ -72,13 +72,22 @@ def logoutUser(request):
     return redirect(loginUser)
 
 def home(request):
-    return render(request, 'index.html')
 
-def projectDetails(request):
-    return render(request, 'project.html')
+    if Project.objects.all().exists():
+        projects = Project.objects.all()
+        context = {'projects': projects}
+        return render(request, 'index.html', context)
+    else:
+        return render(request, '404.html')
 
-def userprofile(request):
-    return render(request, 'profile.html')
+def projectDetails(request, projectName):
+    try:
+        project = Project.objects.get(projectName = projectName)
+        context = {'project': project}
+        return render(request, 'project.html', context)
+    except:
+        return render(request, '404.html')
+
 
 def uploadProject(request):
     return render(request, 'upload.html')
