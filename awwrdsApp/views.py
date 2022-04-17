@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from .models import Profile
 from .forms import UserRegistrationForm, LoginUserForm
 
 
@@ -27,6 +28,8 @@ def signupUser(request):
                 user.email = user.email.lower()
                 user.username = user.username.lower()
                 user.save()
+                userProfile = Profile(user=user)
+                userProfile.save()
                 login(request, user)
                 return redirect('home')
             
@@ -61,6 +64,12 @@ def loginUser(request):
     form = LoginUserForm()
     context = {'form': form}
     return render(request, 'login.html', context)
+
+
+@login_required(login_url='login')
+def logoutUser(request):
+    logout(request)
+    return redirect(loginUser)
 
 def home(request):
     return render(request, 'index.html')
