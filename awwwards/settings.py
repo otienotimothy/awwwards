@@ -14,6 +14,11 @@ from pathlib import Path
 import dj_database_url
 from decouple import config, Csv
 
+# Set Up Cloudinary
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,7 +35,7 @@ DEBUG = config('DEBUG', cast=bool)
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = config('HOSTS', cast = Csv())
+    ALLOWED_HOSTS = config('HOSTS', cast=Csv())
 
 
 # Application definition
@@ -149,3 +154,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Cloudinary Configs
+
+cloudinary.config(
+    cloud_name=config('CLOUDNAME'),
+    api_key=config('APIKEY'),
+    api_secret=config('APISECRET')
+)
