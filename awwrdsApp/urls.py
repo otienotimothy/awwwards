@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import home, projectDetails, userprofile, uploadProject, loginUser, signupUser
+from .views import home, projectDetails, userprofile, uploadProject, loginUser, signupUser, logoutUser
 
 
 urlpatterns = [
@@ -9,5 +9,6 @@ urlpatterns = [
     path('profile/', userprofile, name='profile'),
     path('upload/', uploadProject, name='upload'),
     path('signup/', signupUser, name='signup'),
-    path('login/', loginUser, name='login')
+    path('login/', loginUser, name='login'),
+    path('logout/', logoutUser, name='logout')
 ]
