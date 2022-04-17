@@ -2,7 +2,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .forms import UserRegistrationForm
+
+from .forms import UserRegistrationForm, LoginUserForm
 
 
 # Create your views here.
@@ -35,7 +36,31 @@ def signupUser(request):
     return render(request, 'signup.html', context)
 
 def loginUser(request):
-    return render(request, 'login.html')
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    if request.method == 'POST':
+        form = LoginUserForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username'].lower()
+            password = form.cleaned_data['password']
+            try:
+                user_exist = User.objects.get(username=username)
+                if user_exist:
+                    user = authenticate(
+                        request, username=username, password=password)
+                    if user:
+                        login(request, user)
+                        return redirect('home')
+                    else:
+                        messages.error(request, 'Invalid username or password')
+            except:
+                messages.error(request, 'User does not exist, sign-up')
+
+    form = LoginUserForm()
+    context = {'form': form}
+    return render(request, 'login.html', context)
 
 def home(request):
     return render(request, 'index.html')
