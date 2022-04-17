@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+	<!-- Section: Design Block -->
+	<section class="text-center">
+		<!-- Background image -->
+		<div
+			class="p-5 bg-image"
+			style="
+				background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+                background-position: center;
+				height: 300px;
+			"
+		></div>
+		<!-- Background image -->
+
+		<div
+			class="card mx-4 mx-md-5 shadow-5-strong"
+			style="
+				margin-top: -140px;
+				background: hsla(0, 0%, 100%, 0.8);
+				backdrop-filter: blur(30px);
+			"
+		>
+			<div class="card-body py-5 px-md-5">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-8">
+						<h2 class="fw-bold mb-5">Upload Project</h2>
+						<form>
+                            <!-- Project Title -->
+							<div class="mb-3">
+								<label for="exampleFormControlInput1" class="form-label w-100 text-start fw-bold">
+                                    Project Title
+                                </label>
+								<input
+									type="text"
+									class="form-control"
+									id="exampleFormControlInput1"
+									placeholder="name@example.com"
+								/>
+							</div>
+							<!-- Add Project Landing Page -->
+							<div class="mb-3">
+								<label for="formFile" class="form-label w-100 text-start fw-bold">
+									Add Image of Landing Page
+								</label>
+								<input class="form-control" type="file" id="formFile" />
+							</div>
+							<!-- Project Description -->
+							<div class="mb-3">
+								<label for="exampleFormControlTextarea1" class="form-label w-100 text-start fw-bold">
+									Project Description
+								</label>
+								<textarea
+									class="form-control"
+									id="exampleFormControlTextarea1"
+									rows="4"
+								></textarea>
+							</div>
+                            <!-- Project Title -->
+							<div class="mb-3">
+								<label for="exampleFormControlInput1" class="form-label w-100 text-start fw-bold">
+                                    Project URL
+                                </label>
+								<input
+									type="url"
+									class="form-control"
+									id="exampleFormControlInput1"
+									placeholder="name@example.com"
+								/>
+							</div>
+							<!-- Submit button -->
+							<button type="submit" class="btn btn-dark mb-4">
+								Submit
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Section: Design Block -->
+</div>
+
+{% endblock %}
