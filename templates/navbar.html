@@ -41,6 +41,7 @@
 				</li>
 			</ul>
 			<!-- Left links -->
+			{% if user.is_authenticated %}
 			<div class="d-flex align-items-center">
 				<!-- Avatar -->
 				<div class="dropdown">
@@ -73,6 +74,12 @@
 					</ul>
 				</div>
 			</div>
+			{% else %}
+			<div>
+				<a href="" class="btn btn-outline-dark">Login</a>
+				<a href="" class="btn btn-dark">Signup</a>
+			</div>
+			{% endif %}
 			<!-- Right elements -->
 		</div>
 		<!-- Collapsible wrapper -->
