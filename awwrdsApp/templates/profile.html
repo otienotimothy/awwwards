@@ -19,7 +19,8 @@
 							<button
 								type="button"
 								class="btn btn-outline-dark"
-								data-mdb-ripple-color="dark"
+								data-bs-toggle="modal"
+								data-bs-target="#editProfileModal"
 								style="z-index: 1"
 							>
 								Edit profile
@@ -96,5 +97,45 @@
 		</div>
 	</div>
 </section>
+
+<!-- Modal -->
+<div
+	class="modal fade"
+	id="editProfileModal"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="profile/edit/" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group mb-3">
+						<label class="form-label text-primary" for={{form.avatar.auto_id}}> Upload Profile Pic </label>
+						{{form.avatar}}
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label text-primary" for={{form.bio.auto_id}}> Bio </label>
+						{{form.bio}}
+					</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+						Save changes
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 {% endblock %}

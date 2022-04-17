@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile, Project
-from .forms import UserRegistrationForm, LoginUserForm
+from .forms import UserRegistrationForm, LoginUserForm, EditProfileForm
 
 
 # Create your views here.
@@ -100,7 +100,9 @@ def userprofile(request, username):
         messages.error(
             request, 'An Error Occured while trying to load your Profile')
 
-    context = {'userProfile': userProfile}
+    form = EditProfileForm()
+
+    context = {'userProfile': userProfile, 'form':form}
     return render(request, 'profile.html', context)
 
 def uploadProject(request):
