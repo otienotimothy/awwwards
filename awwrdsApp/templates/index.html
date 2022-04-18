@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<div style="min-height:62vh" class="container">
+<div style="min-height: 62vh" class="container">
 	<div
 		class="d-flex align-items-center justify-content-between flex-wrap mt-3 mt-md-5"
 	>
@@ -12,7 +12,9 @@
 			/>
 			<div class="card-body">
 				<h4 class="card-title mb-3">
-					<a class="text-dark" href="/project/{{project.id}}/"> {{project.title}} </a>
+					<a class="text-dark" href="/project/{{project.id}}/">
+						{{project.title}}
+					</a>
 				</h4>
 				<div>
 					<img
@@ -22,8 +24,14 @@
 						alt="Black and White Portrait of a Man"
 						loading="lazy"
 					/>
-					by <cite title="Source Title"> {{project.projectBy.username}} </cite>
+					<span>
+						by
+						<cite title="Source Title"> {{project.projectBy.username}} </cite>
+					</span>
 				</div>
+				<a href="{{project.projectUrl}}" target="_blank">
+					Website Link <i class="fa-solid fa-arrow-up-right-from-square"></i>
+				</a>
 			</div>
 		</div>
 		{% endfor %}

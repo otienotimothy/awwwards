@@ -71,11 +71,13 @@
 						<div class="d-flex justify-content-between flex-wrap">
 							{% for project in user.projects.all %}
 							<div style="width: 21rem;" class="card mb-3">
-								<img src="{{project.projectImage.url}}" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<img src="{{project.projectImage.url}}" class="card-img-top w-100" alt="Project Landing Page"/>
 								<div class="card-body">
 									<h5 class="card-title"> {{project.title}}  </h5>
-									<p class="card-text">Some q up the bulk of the card's</p>
-									<a href="#!" class="btn btn-primary">Button</a>
+									<a href="{{project.projectUrl}}" target="_blank">
+										Website Link 
+										<i class="fa-solid fa-arrow-up-right-from-square"></i>
+									</a>
 								</div>
 							</div>
 							{% endfor %}
