@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+
+<div
+	style="height: 65vh"
+	class="container d-flex align-items-center justify-content-center"
+>
+	<div>
+		<h1>404</h1>
+		<h2 class="my-3">The Resource you are looking for does not Exist</h2>
+		<a href="{% url 'home' %}" class="text-center btn btn-dark"> Go HOME </a>
+	</div>
+</div>
+
+{% endblock %}
