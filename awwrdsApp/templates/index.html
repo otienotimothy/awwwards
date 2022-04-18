@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
+<div style="min-height:62vh" class="container">
 	<div
 		class="d-flex align-items-center justify-content-between flex-wrap mt-3 mt-md-5"
 	>
+		{% for project in projects %}
 		<div style="max-width: 26rem" class="card mb-3 shadow">
 			<img
 				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
@@ -11,7 +12,7 @@
 			/>
 			<div class="card-body">
 				<h4 class="card-title mb-3">
-					<a class="text-dark" href="#">Project title</a>
+					<a class="text-dark" href="/project/{{project.id}}/"> {{project.title}} </a>
 				</h4>
 				<div>
 					<img
@@ -21,120 +22,11 @@
 						alt="Black and White Portrait of a Man"
 						loading="lazy"
 					/>
-					by <cite title="Source Title"> Project Author </cite>
+					by <cite title="Source Title"> {{project.projectBy.username}} </cite>
 				</div>
 			</div>
 		</div>
-		<div style="max-width: 26rem" class="card mb-3 shadow">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-				class="card-img-top"
-				alt="Fissure in Sandstone"
-			/>
-			<div class="card-body">
-				<h4 class="card-title mb-3">
-					<a class="text-dark" href="#">Project title</a>
-				</h4>
-				<div>
-					<img
-						src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-						class="rounded-circle me-3"
-						height="35"
-						alt="Black and White Portrait of a Man"
-						loading="lazy"
-					/>
-					by <cite title="Source Title"> Project Author </cite>
-				</div>
-			</div>
-		</div>
-		<div style="max-width: 26rem" class="card mb-3 shadow">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-				class="card-img-top"
-				alt="Fissure in Sandstone"
-			/>
-			<div class="card-body">
-				<h4 class="card-title mb-3">
-					<a class="text-dark" href="#">Project title</a>
-				</h4>
-				<div>
-					<img
-						src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-						class="rounded-circle me-3"
-						height="35"
-						alt="Black and White Portrait of a Man"
-						loading="lazy"
-					/>
-					by <cite title="Source Title"> Project Author </cite>
-				</div>
-			</div>
-		</div>
-		<div style="max-width: 26rem" class="card mb-3 shadow">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-				class="card-img-top"
-				alt="Fissure in Sandstone"
-			/>
-			<div class="card-body">
-				<h4 class="card-title mb-3">
-					<a class="text-dark" href="#">Project title</a>
-				</h4>
-				<div>
-					<img
-						src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-						class="rounded-circle me-3"
-						height="35"
-						alt="Black and White Portrait of a Man"
-						loading="lazy"
-					/>
-					by <cite title="Source Title"> Project Author </cite>
-				</div>
-			</div>
-		</div>
-		<div style="max-width: 26rem" class="card mb-3 shadow">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-				class="card-img-top"
-				alt="Fissure in Sandstone"
-			/>
-			<div class="card-body">
-				<h4 class="card-title mb-3">
-					<a class="text-dark" href="#">Project title</a>
-				</h4>
-				<div>
-					<img
-						src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-						class="rounded-circle me-3"
-						height="35"
-						alt="Black and White Portrait of a Man"
-						loading="lazy"
-					/>
-					by <cite title="Source Title"> Project Author </cite>
-				</div>
-			</div>
-		</div>
-		<div style="max-width: 26rem" class="card mb-3 shadow">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-				class="card-img-top"
-				alt="Fissure in Sandstone"
-			/>
-			<div class="card-body">
-				<h4 class="card-title mb-3">
-					<a class="text-dark" href="#">Project title</a>
-				</h4>
-				<div>
-					<img
-						src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-						class="rounded-circle me-3"
-						height="35"
-						alt="Black and White Portrait of a Man"
-						loading="lazy"
-					/>
-					by <cite title="Source Title"> Project Author </cite>
-				</div>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}
