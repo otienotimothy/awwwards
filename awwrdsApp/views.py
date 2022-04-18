@@ -90,20 +90,21 @@ def projectDetails(request, projectName):
 
 def userprofile(request, username):
 
+    form = EditProfileForm()
+
     if request.user.username != username:
         logout(request)
         redirect(loginUser)
 
     try:
         userProfile = User.objects.get(username=username)
+        context = {'userProfile': userProfile, 'form': form}
+        return render(request, 'profile.html', context)
     except:
         messages.error(
             request, 'An Error Occured while trying to load your Profile')
-
-    form = EditProfileForm()
-
-    context = {'userProfile': userProfile, 'form':form}
-    return render(request, 'profile.html', context)
+        return render(request, '404.html')
+    
 
 def uploadProject(request):
     return render(request, 'upload.html')

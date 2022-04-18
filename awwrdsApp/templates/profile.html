@@ -60,6 +60,7 @@
 							<p class="lead fw-normal mb-0">Recent photos</p>
 						</div>
 						<div class="row g-2">
+							{% if userProfile.profile.projects.all %}
 							<div class="col mb-2">
 								<img
 									src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
@@ -90,6 +91,9 @@
 									class="w-100 rounded-3"
 								/>
 							</div>
+							{% else %}
+							<h3> No Items to Display </h3>
+							{% endif %}
 						</div>
 					</div>
 				</div>
