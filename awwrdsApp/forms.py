@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
-from .models import Profile
+from .models import Profile, Project
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -39,4 +39,17 @@ class EditProfileForm(forms.ModelForm):
         widgets = {
             'avatar': forms.FileInput(attrs={'class': 'form-control my-1'}),
             'bio': forms.Textarea(attrs={'class': 'form-control my-1'})
+        }
+
+
+class UploadProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'projectImage', 'description', 'projectUrl']
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'projectImage': forms.FileInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control my-1', 'rows': '5'}),
+            'projectUrl': forms.TextInput(attrs={'class': 'form-control'})
         }

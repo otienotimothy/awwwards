@@ -8,7 +8,7 @@
 			class="p-5 bg-image"
 			style="
 				background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
-                background-position: center;
+				background-position: center;
 				height: 300px;
 			"
 		></div>
@@ -26,52 +26,43 @@
 				<div class="row d-flex justify-content-center">
 					<div class="col-lg-8">
 						<h2 class="fw-bold mb-5">Upload Project</h2>
-						<form>
-                            <!-- Project Title -->
-							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label w-100 text-start fw-bold">
-                                    Project Title
-                                </label>
-								<input
-									type="text"
-									class="form-control"
-									id="exampleFormControlInput1"
-									placeholder="name@example.com"
-								/>
-							</div>
-							<!-- Add Project Landing Page -->
-							<div class="mb-3">
-								<label for="formFile" class="form-label w-100 text-start fw-bold">
-									Add Image of Landing Page
+						<form action="" method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<!-- Project Title -->
+							<div class="form-outline mb-4">
+								<label class="form-label w-100 text-start fw-bold" for="{{form.title.auto_id}}">
+									Project Title
 								</label>
-								<input class="form-control" type="file" id="formFile" />
+								{{form.title}}
 							</div>
+
+							<!-- Project Hero Image -->
+							<div class="form-outline mb-4">
+								<label class="form-label w-100 text-start fw-bold" for="{{form.projectImage.auto_id}}"
+									>Add Hero Image</label
+								>
+								{{form.projectImage}}
+							</div>
+
+							<!-- Project URL -->
+							<div class="form-outline mb-4 w-100 text-start fw-bold">
+								<label class="form-label" for="{{form.projectUrl.auto_id}}"
+									>Project URL</label
+								>
+								{{form.projectUrl}}
+							</div>
+
 							<!-- Project Description -->
-							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label w-100 text-start fw-bold">
+							<div class="form-outline mb-4">
+								<label class="form-label w-100 text-start fw-bold" for="{{form.description.auto_id}}">
 									Project Description
 								</label>
-								<textarea
-									class="form-control"
-									id="exampleFormControlTextarea1"
-									rows="4"
-								></textarea>
+								{{form.description}}
 							</div>
-                            <!-- Project Title -->
-							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label w-100 text-start fw-bold">
-                                    Project URL
-                                </label>
-								<input
-									type="url"
-									class="form-control"
-									id="exampleFormControlInput1"
-									placeholder="name@example.com"
-								/>
-							</div>
+
 							<!-- Submit button -->
-							<button type="submit" class="btn btn-dark mb-4">
-								Submit
+							<button type="submit" class="btn btn-primary btn-block mb-4">
+								Sign up
 							</button>
 						</form>
 					</div>
