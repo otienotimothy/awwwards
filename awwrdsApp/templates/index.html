@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+
+{% block content %}
 <div style="min-height: 62vh" class="container">
 	<div
 		class="d-flex align-items-center justify-content-between flex-wrap mt-3 mt-md-5"
@@ -6,7 +8,7 @@
 		{% for project in projects %}
 		<div style="max-width: 26rem" class="card mb-3 shadow">
 			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+				src="{{project.projectImage.url}}"
 				class="card-img-top"
 				alt="Fissure in Sandstone"
 			/>
@@ -18,7 +20,7 @@
 				</h4>
 				<div>
 					<img
-						src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+						src="{{project.projectBy.profile.avatar.url}}"
 						class="rounded-circle me-3"
 						height="35"
 						alt="Black and White Portrait of a Man"
