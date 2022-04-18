@@ -18,9 +18,9 @@
 	>
 		<div>
 			<div class="mb-5">
-				<h2 class="text-light display-4">Project Title</h2>
+				<h2 class="text-light display-4"> {{project.title}} </h2>
 				<span class="text-light fs-5"
-					>by <cite title="Source Title"> Project Author </cite></span
+					>by <cite title="Source Title"> {{project.projectBy.username}} </cite></span
 				>
 			</div>
 			<div>
@@ -43,8 +43,7 @@
 		<div class="col-12 col-md-6 px-3">
 			<h3>About</h3>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt magni
-				similique quas quos quasi maxime dolorem cupiditate ea quidem excepturi?
+				{{project.description}}
 			</p>
 		</div>
 		<div class="col-12 col-md-6 px-3">

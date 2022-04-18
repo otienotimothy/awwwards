@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Profile, Project
+from django.db.models import Avg
+from .models import Profile, Project, Rating
 from .forms import UserRegistrationForm, LoginUserForm, EditProfileForm, UploadProjectForm, ReviewProjectForm
 
 
@@ -84,6 +85,8 @@ def projectDetails(request, projectId):
     form = ReviewProjectForm()
     try:
         project = Project.objects.get(pk = projectId)
+        designAvg = project.project_rating.all().aggregate(Avg('design'))
+        print(designAvg)
         context = {'project': project, 'form': form}
         return render(request, 'project.html', context)
     except:
@@ -120,6 +123,14 @@ def uploadProject(request):
             project = form.save(commit=False)
             project.projectBy_id = request.user.id
             project.save()
+            # Add Default Rating to the Project
+            rating = Rating()
+            rating.design = 5.0
+            rating.usability = 5.0
+            rating.content = 5.0
+            rating.project_id = project.id
+            rating.user = request.user.id
+            rating.save()
             messages.success(request, 'Project Uploaded Successfully')
         else:
             messages.error(
