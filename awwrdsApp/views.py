@@ -89,6 +89,7 @@ def projectDetails(request, projectId):
     except:
         return render(request, '404.html')
 
+@login_required(login_url='login')
 def userprofile(request, username):
 
     form = EditProfileForm()
@@ -106,7 +107,7 @@ def userprofile(request, username):
             request, 'An Error Occured while trying to load your Profile')
         return render(request, '404.html')
     
-
+@login_required(login_url='login')
 def uploadProject(request):
 
     if (not request.user.is_authenticated):
@@ -128,6 +129,7 @@ def uploadProject(request):
     context = {'form': form}
     return render(request, 'upload.html', context)
 
+@login_required(login_url='login')
 def rateProject(request, projectId):
 
     if request.method == 'POST':
