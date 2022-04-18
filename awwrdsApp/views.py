@@ -116,6 +116,20 @@ def userprofile(request, username):
         messages.error(
             request, 'An Error Occured while trying to load your Profile')
         return render(request, '404.html')
+
+@login_required(login_url='login')
+def editUserProfile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            newProfile = form.save(commit=False)
+            newProfile.user = request.user
+            newProfile.save()
+            messages.success(request, 'Your Profile was Updated successfully')
+        else:
+            messages.error(request, 'An Error occured while trying to update your profile')
+
+    return redirect(userprofile, username = request.user.username)
     
 @login_required(login_url='login')
 def uploadProject(request):
