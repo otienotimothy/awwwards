@@ -86,8 +86,15 @@ def projectDetails(request, projectId):
     try:
         project = Project.objects.get(pk = projectId)
         designAvg = project.project_rating.all().aggregate(Avg('design'))
-        print(designAvg)
-        context = {'project': project, 'form': form}
+        usabilityAvg = project.project_rating.all().aggregate(Avg('usability'))
+        contentAvg = project.project_rating.all().aggregate(Avg('content'))
+        context = {
+            'project': project, 
+            'form': form,
+            'design': designAvg['design__avg'],
+            'usability': usabilityAvg['usability__avg'],
+            'content': contentAvg['content__avg']
+            }
         return render(request, 'project.html', context)
     except:
         return render(request, '404.html')
@@ -129,7 +136,7 @@ def uploadProject(request):
             rating.usability = 5.0
             rating.content = 5.0
             rating.project_id = project.id
-            rating.user = request.user.id
+            rating.user = request.user
             rating.save()
             messages.success(request, 'Project Uploaded Successfully')
         else:
