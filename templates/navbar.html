@@ -4,7 +4,7 @@
 	<!-- Container wrapper -->
 	<div class="container">
 		<!-- Navbar brand -->
-		<a class="navbar-brand mt-2 mt-lg-0" href="#">
+		<a class="navbar-brand mt-2 mt-lg-0" href="{% url 'home' %}">
 			<img
 				src="{% static 'media/awwwards.png' %}"
 				width="180"
@@ -31,13 +31,10 @@
 			<!-- Left links -->
 			<ul class="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
 				<li class="nav-item me-2">
-					<a class="nav-link" href="#">Home</a>
+					<a class="nav-link" href="{% url 'home' %}">Home</a>
 				</li>
 				<li class="nav-item me-2">
-					<a class="nav-link" href="#">Featured Project</a>
-				</li>
-				<li class="nav-item me-2">
-					<a class="nav-link" href="#">Submit Project</a>
+					<a class="nav-link" href="{% url 'upload' %}">Submit Project</a>
 				</li>
 			</ul>
 			<!-- Left links -->
@@ -53,6 +50,7 @@
 						data-bs-toggle="dropdown"
 						aria-expanded="false"
 					>
+					{% if user.profile.avatar.url %}
 						<img
 							src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
 							class="rounded-circle"
@@ -60,24 +58,27 @@
 							alt="Black and White Portrait of a Man"
 							loading="lazy"
 						/>
+					{% else %}
+					<i class="fa-solid fa-user"></i>
+					{% endif %}	
 					</a>
 					<ul
 						class="dropdown-menu dropdown-menu-start"
 						aria-labelledby="navbarDropdownMenuAvatar"
 					>
 						<li>
-							<a class="dropdown-item" href="#">My profile</a>
+							<a class="dropdown-item" href="{% url 'profile' user.username %}">My profile</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="#">Logout</a>
+							<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 			{% else %}
 			<div>
-				<a href="" class="btn btn-outline-dark">Login</a>
-				<a href="" class="btn btn-dark">Signup</a>
+				<a href="{% url 'login' %}" class="btn btn-outline-dark">Login</a>
+				<a href="{% url 'signup' %}"class="btn btn-dark">Signup</a>
 			</div>
 			{% endif %}
 			<!-- Right elements -->
