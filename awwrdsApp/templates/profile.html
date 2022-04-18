@@ -46,7 +46,7 @@
                             
 						</div>
 						<div class="ms-3" style="margin-top: 130px">
-							<h5>Andy Horwitz</h5>
+							<h5> {{user.username}} </h5>
 						</div>
 					</div>
 					<div class="p-4 text-black" style="background-color: #f5f6f6">
@@ -61,62 +61,24 @@
 						<div class="mb-5">
 							<p class="lead fw-normal mb-1">Bio</p>
 							<div class="p-4" style="background-color: #f5f6f6">
-								<p class="font-italic mb-1"> {{userProfile.profile.bio}} </p>
+								<p class="font-italic mb-1"> {{user.profile.bio}} </p>
 							</div>
 						</div>
 						<div class="d-flex justify-content-between align-items-center mb-4">
-							<p class="lead fw-normal mb-0">Recent photos</p>
+							<p class="lead fw-normal mb-0">Recent Projects</p>
 						</div>
-						{% if userProfile.projects.all %}
+						{% if user.projects.all %}
 						<div class="d-flex justify-content-between flex-wrap">
+							{% for project in user.projects.all %}
 							<div style="width: 21rem;" class="card mb-3">
-								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<img src="{{project.projectImage.url}}" class="card-img-top w-100" alt="Fissure in Sandstone"/>
 								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<h5 class="card-title"> {{project.title}}  </h5>
+									<p class="card-text">Some q up the bulk of the card's</p>
 									<a href="#!" class="btn btn-primary">Button</a>
 								</div>
 							</div>
-							<div style="width: 21rem;" class="card mb-3">
-								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#!" class="btn btn-primary">Button</a>
-								</div>
-							</div>
-							<div style="width: 21rem;" class="card mb-3">
-								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#!" class="btn btn-primary">Button</a>
-								</div>
-							</div>
-							<div style="width: 21rem;" class="card mb-3">
-								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#!" class="btn btn-primary">Button</a>
-								</div>
-							</div>
-							<div style="width: 21rem;" class="card mb-3">
-								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#!" class="btn btn-primary">Button</a>
-								</div>
-							</div>
-							<div style="width: 21rem;" class="card mb-3">
-								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#!" class="btn btn-primary">Button</a>
-								</div>
-							</div>
+							{% endfor %}
 						</div>
 						{% else %}
 							<h3> No Items to Display </h3>

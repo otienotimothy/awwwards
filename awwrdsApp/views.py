@@ -108,14 +108,8 @@ def userprofile(request, username):
         logout(request)
         return redirect(loginUser)
 
-    try:
-        userProfile = User.objects.get(username=username)
-        context = {'userProfile': userProfile, 'form': form}
-        return render(request, 'profile.html', context)
-    except:
-        messages.error(
-            request, 'An Error Occured while trying to load your Profile')
-        return render(request, '404.html')
+    context = {'form': form}
+    return render(request, 'profile.html', context)
 
 @login_required(login_url='login')
 def editUserProfile(request, username):
