@@ -118,9 +118,11 @@ def userprofile(request, username):
         return render(request, '404.html')
 
 @login_required(login_url='login')
-def editUserProfile(request):
+def editUserProfile(request, username):
+    user = User.objects.get(username = username)
+    profile = user.profile
     if request.method == 'POST':
-        form = EditProfileForm(request.POST, request.FILES)
+        form = EditProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             newProfile = form.save(commit=False)
             newProfile.user = request.user
@@ -129,7 +131,7 @@ def editUserProfile(request):
         else:
             messages.error(request, 'An Error occured while trying to update your profile')
 
-    return redirect(userprofile, username = request.user.username)
+    return redirect(userprofile, username = username)
     
 @login_required(login_url='login')
 def uploadProject(request):

@@ -12,7 +12,7 @@
 						<div class="ms-4 mt-5 d-flex flex-column" style="width: 150px">
 							{% if user.profile.avatar.url %}
 							<img
-								src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+								src="{{user.profile.avatar.url}}"
 								alt="Generic placeholder image"
 								class="img-fluid img-thumbnail mt-4 mb-2"
 								style="width: 150px; height: 200px; z-index: 1"
@@ -52,26 +52,16 @@
 					<div class="p-4 text-black" style="background-color: #f5f6f6">
 						<div class="d-flex justify-content-end text-center py-1">
 							<div>
-								<p class="mb-1 h5">253</p>
-								<p class="small text-muted mb-0">Photos</p>
-							</div>
-							<div class="px-3">
-								<p class="mb-1 h5">1026</p>
-								<p class="small text-muted mb-0">Followers</p>
-							</div>
-							<div>
-								<p class="mb-1 h5">478</p>
-								<p class="small text-muted mb-0">Following</p>
+								<p class="mb-1 h5"> {{user.projects.all | length}} </p>
+								<p class="small text-muted mb-0"> Projects </p>
 							</div>
 						</div>
 					</div>
 					<div class="card-body p-4 text-black">
 						<div class="mb-5">
-							<p class="lead fw-normal mb-1">About</p>
+							<p class="lead fw-normal mb-1">Bio</p>
 							<div class="p-4" style="background-color: #f5f6f6">
-								<p class="font-italic mb-1">Web Developer</p>
-								<p class="font-italic mb-1">Lives in New York</p>
-								<p class="font-italic mb-0">Photographer</p>
+								<p class="font-italic mb-1"> {{userProfile.profile.bio}} </p>
 							</div>
 						</div>
 						<div class="d-flex justify-content-between align-items-center mb-4">
@@ -148,7 +138,7 @@
 >
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
-			<form action="/profile/edit/" method="POST" enctype="multipart/form-data">
+			<form action="/profile/{{user.username}}/edit/" method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
