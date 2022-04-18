@@ -17,14 +17,6 @@
 								class="img-fluid img-thumbnail mt-4 mb-2"
 								style="width: 150px; height: 200px; z-index: 1"
 							/>
-							{% else %}
-							<div 
-								style="width: 150px; height: 200px; z-index: 1"
-								class="d-flex align-items-center justify-content-center img-fluid img-thumbnail mt-4 mb-2"
-							>
-								<i class="fa-solid fa-user text-dark fs-1"></i>
-							</div>
-							{% endif %}
 							<button
 								type="button"
 								class="btn btn-outline-dark"
@@ -34,6 +26,23 @@
 							>
 								Edit profile
 							</button>
+							{% else %}
+							<div 
+								style="width: 150px; height: 200px; z-index: 1"
+								class="d-flex align-items-center justify-content-center img-fluid img-thumbnail mt-4 mb-2"
+							>
+								<i class="fa-solid fa-user text-dark fs-1"></i>
+							</div>
+							<button
+								type="button"
+								class="btn btn-light my-3"
+								data-bs-toggle="modal"
+								data-bs-target="#editProfileModal"
+								style="z-index: 1"
+							>
+								Edit profile
+							</button>
+							{% endif %}
                             
 						</div>
 						<div class="ms-3" style="margin-top: 130px">
@@ -68,42 +77,60 @@
 						<div class="d-flex justify-content-between align-items-center mb-4">
 							<p class="lead fw-normal mb-0">Recent photos</p>
 						</div>
-						<div class="row g-2">
-							{% if userProfile.profile.projects.all %}
-							<div class="col mb-2">
-								<img
-									src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-									alt="image 1"
-									class="w-100 rounded-3"
-								/>
+						{% if userProfile.projects.all %}
+						<div class="d-flex justify-content-between flex-wrap">
+							<div style="width: 21rem;" class="card mb-3">
+								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#!" class="btn btn-primary">Button</a>
+								</div>
 							</div>
-							<div class="col mb-2">
-								<img
-									src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-									alt="image 1"
-									class="w-100 rounded-3"
-								/>
+							<div style="width: 21rem;" class="card mb-3">
+								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#!" class="btn btn-primary">Button</a>
+								</div>
+							</div>
+							<div style="width: 21rem;" class="card mb-3">
+								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#!" class="btn btn-primary">Button</a>
+								</div>
+							</div>
+							<div style="width: 21rem;" class="card mb-3">
+								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#!" class="btn btn-primary">Button</a>
+								</div>
+							</div>
+							<div style="width: 21rem;" class="card mb-3">
+								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#!" class="btn btn-primary">Button</a>
+								</div>
+							</div>
+							<div style="width: 21rem;" class="card mb-3">
+								<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top w-100" alt="Fissure in Sandstone"/>
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#!" class="btn btn-primary">Button</a>
+								</div>
 							</div>
 						</div>
-						<div class="row g-2">
-							<div class="col">
-								<img
-									src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-									alt="image 1"
-									class="w-100 rounded-3"
-								/>
-							</div>
-							<div class="col">
-								<img
-									src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-									alt="image 1"
-									class="w-100 rounded-3"
-								/>
-							</div>
-							{% else %}
+						{% else %}
 							<h3> No Items to Display </h3>
-							{% endif %}
-						</div>
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -119,7 +146,7 @@
 	aria-labelledby="exampleModalLabel"
 	aria-hidden="true"
 >
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<form action="profile/edit/" method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
