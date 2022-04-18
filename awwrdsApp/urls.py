@@ -5,7 +5,7 @@ from .views import home, projectDetails, userprofile, uploadProject, loginUser, 
 
 urlpatterns = [
     path('', home, name='home'),
-    path('project/', projectDetails, name='projectDetails'),
+    path('project/<int:projectId>/', projectDetails, name='projectDetails'),
     path('profile/<str:username>/', userprofile, name='profile'),
     path('upload/', uploadProject, name='upload'),
     path('signup/', signupUser, name='signup'),

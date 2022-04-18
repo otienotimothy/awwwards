@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile, Project
-from .forms import UserRegistrationForm, LoginUserForm, EditProfileForm, UploadProjectForm
+from .forms import UserRegistrationForm, LoginUserForm, EditProfileForm, UploadProjectForm, ReviewProjectForm
 
 
 # Create your views here.
@@ -80,10 +80,11 @@ def home(request):
     else:
         return render(request, '404.html')
 
-def projectDetails(request, projectName):
+def projectDetails(request, projectId):
+    form = ReviewProjectForm()
     try:
-        project = Project.objects.get(projectName = projectName)
-        context = {'project': project}
+        project = Project.objects.get(pk = projectId)
+        context = {'project': project, 'form': form}
         return render(request, 'project.html', context)
     except:
         return render(request, '404.html')
