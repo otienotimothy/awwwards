@@ -127,3 +127,18 @@ def uploadProject(request):
     form = UploadProjectForm()
     context = {'form': form}
     return render(request, 'upload.html', context)
+
+def rateProject(request, projectId):
+
+    if request.method == 'POST':
+        form = ReviewProjectForm(request.POST)
+        if form.is_valid:
+            rating = form.save(commit=False)
+            rating.project_id = projectId
+            rating.user_id = request.user.id
+            rating.save()
+            messages.success(request, 'Your Review has been saved Successfully')
+            return redirect(projectDetails, projectId = projectId)
+            
+    else:
+        return render(request, '404.html')
