@@ -18,7 +18,7 @@ Awwards seeks to enable user to view projects and provide a rating based on thei
 
 ## Links
 
-- Web Application Link - <>
+- Web Application Link - <https://new-awwwards.herokuapp.com/>
 - Project Repository Link - <https://github.com/otienotimothy/awwwards.git>
 
 ## Setup/Installation Requirements
